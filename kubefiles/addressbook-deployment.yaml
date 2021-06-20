@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: addressbook
+  name: addressbook
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: addressbook
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: addressbook
+    spec:
+      containers:
+      - image: harbor.briagro.lab/bripoc/addressbook:latest
+        name: addressbook
+        resources: {}
+status: {}
