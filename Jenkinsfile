@@ -49,6 +49,11 @@ spec:
 }
    }
   stages {
+    stage ('checkout scm') {
+     steps {
+           git branch: 'master', url: "https://github.com/roshans416/eks-jenkins.git"
+            }
+        }
     stage('Build') {
       steps {
         container('maven') {
