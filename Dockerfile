@@ -5,6 +5,6 @@
 FROM tomcat:9.0-alpine
 
 #FROM tomcat:8.0-jre8
-RUN cp /home/jenkins/agent/workspace/jenkins-pipeline/addressbook.war /usr/local/tomcat/webapps/
+RUN cp /home/jenkins/agent/workspace/jenkins-pipeline/target/addressbook.war /usr/local/tomcat/webapps/
 EXPOSE 8080
 CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]

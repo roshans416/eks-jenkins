@@ -79,7 +79,7 @@ spec:
       steps {
         container('docker') {
           sh """
-             docker build -t 080424365188.dkr.ecr.ap-southeast-1.amazonaws.com/addressbook:latest . -v /etc/resolv.conf:/etc/resolv.conf
+             docker build -t 080424365188.dkr.ecr.ap-southeast-1.amazonaws.com/addressbook:latest .
              docker push 080424365188.dkr.ecr.ap-southeast-1.amazonaws.com/addressbook:latest  
           """
         }
