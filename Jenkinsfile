@@ -29,6 +29,8 @@ spec:
     volumeMounts:
     - mountPath: /var/run/docker.sock
       name: docker-sock
+    - mountPath: /etc/resolv.conf
+      name: resolvconf
   - name: kubectl
     image: public.ecr.aws/s5f4f9y1/kubectl:latest
     command:
@@ -45,6 +47,9 @@ spec:
     - name: docker-sock
       hostPath:
         path: /var/run/docker.sock
+    - name: resolvconf
+      hostPath:
+        path: /etc/resolv.conf
     - name: m2
       persistentVolumeClaim:
         claimName: maven-pvc
