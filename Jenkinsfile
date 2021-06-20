@@ -30,7 +30,10 @@ spec:
     - mountPath: /var/run/docker.sock
       name: docker-sock
   - name: kubectl
-    image: bitnami/kubectl:latest
+    image: dtzar/helm-kubectl
+    command:
+    - cat
+    tty: true
     imagePullPolicy: IfNotPresent
     volumeMounts:
       - name: kubecfg
