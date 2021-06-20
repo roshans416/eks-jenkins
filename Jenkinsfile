@@ -79,9 +79,7 @@ spec:
       steps {
         container('docker') {
           sh """
-             echo "nameserver 8.8.8.8" >> /etc/resolv.conf
-             echo "nameserver 4.2.2.2" >> /etc/resolv.conf
-             docker build -t 080424365188.dkr.ecr.ap-southeast-1.amazonaws.com/addressbook:latest .
+             docker build -t 080424365188.dkr.ecr.ap-southeast-1.amazonaws.com/addressbook:latest . -v /etc/resolv.conf:/etc/resolv.conf
              docker push 080424365188.dkr.ecr.ap-southeast-1.amazonaws.com/addressbook:latest  
           """
         }
