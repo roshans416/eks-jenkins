@@ -2,7 +2,7 @@
 #COPY  . /root/app/
 #WORKDIR /root/app
 #RUN mvn clean package -Dmaven.test.skip=true
-FROM tomcat:9.0-alpine
+FROM public.ecr.aws/s5f4f971/tomcat:9.0-alpine
 
 #FROM tomcat:8.0-jre8
 RUN cp /home/jenkins/agent/workspace/jenkins-pipeline/target/addressbook.war /usr/local/tomcat/webapps/
