@@ -29,6 +29,8 @@ spec:
     volumeMounts:
     - mountPath: /var/run/docker.sock
       name: docker-sock
+    - mountPath: /etc/resolv.conf
+      name: resolvconf
   - name: kubectl
     image: public.ecr.aws/s5f4f9y1/kubectl:latest
     command:
@@ -45,6 +47,9 @@ spec:
     - name: docker-sock
       hostPath:
         path: /var/run/docker.sock
+    - name: resolvconf
+      hostPath:
+        path: /etc/resolv.conf
     - name: m2
       persistentVolumeClaim:
         claimName: maven-pvc
@@ -57,15 +62,15 @@ spec:
            git branch: 'master', url: "https://github.com/roshans416/eks-jenkins.git"
             }
         }
-   // stage('Build') {
-   //  steps {
-   //    container('maven') {
-   //      sh """
-   //        mvn package -DskipTests
-   //      """
-   //    }
-   //  }
-   // }
+   stage('Build') {
+     steps {
+      container('maven') {
+         sh """
+           mvn package -DskipTests
+         """
+       }
+     }
+   }
  //  stage('Test') {
   //    steps {
   //     container('maven') {
@@ -79,7 +84,7 @@ spec:
       steps {
         container('docker') {
           sh """
-             docker build -t 080424365188.dkr.ecr.ap-southeast-1.amazonaws.com/addressbook:latest . -v /etc/resolv.conf:/etc/resolv.conf
+             docker build -t 080424365188.dkr.ecr.ap-southeast-1.amazonaws.com/addressbook:latest .
              docker push 080424365188.dkr.ecr.ap-southeast-1.amazonaws.com/addressbook:latest  
           """
         }

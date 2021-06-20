@@ -22,15 +22,17 @@ spec:
       - mountPath: "/root/.m2"
         name: m2
   - name: docker
-    image: public.ecr.aws/s5f4f9y1/docker:latest
+    image: public.ecr.aws/s5f4f9y1/docker:dind
+    securityContext:
+      privileged: true
     command:
     - cat
     tty: true
     volumeMounts:
-    - mountPath: /var/run/docker.sock
-      name: docker-sock
-    - mountPath: /etc/resolv.conf
-      name: resolvconf
+    #- mountPath: /var/run/docker.sock
+    #  name: docker-sock
+    #- mountPath: /etc/resolv.conf
+    #  name: resolvconf
   - name: kubectl
     image: public.ecr.aws/s5f4f9y1/kubectl:latest
     command:
@@ -62,15 +64,15 @@ spec:
            git branch: 'master', url: "https://github.com/roshans416/eks-jenkins.git"
             }
         }
-   stage('Build') {
-     steps {
-      container('maven') {
-         sh """
-           mvn package -DskipTests
-         """
-       }
-     }
-   }
+  // stage('Build') {
+ //    steps {
+ //     container('maven') {
+ //        sh """
+ //          mvn package -DskipTests
+ //        """
+ //      }
+ //    }
+ //  }
  //  stage('Test') {
   //    steps {
   //     container('maven') {
