@@ -34,7 +34,7 @@ spec:
     imagePullPolicy: IfNotPresent
     volumeMounts:
       - name: kubecfg
-        mountPath: /root/.kube
+        mountPath: /root/.kube/config
   volumes:
     - name: kubecfg
       secret:
