@@ -57,15 +57,15 @@ spec:
            git branch: 'master', url: "https://github.com/roshans416/eks-jenkins.git"
             }
         }
-   stage('Build') {
-     steps {
-      container('maven') {
-         sh """
-           mvn package -DskipTests
-         """
-       }
-     }
-   }
+   // stage('Build') {
+   //  steps {
+   //    container('maven') {
+   //      sh """
+   //        mvn package -DskipTests
+   //      """
+   //    }
+   //  }
+   // }
  //  stage('Test') {
   //    steps {
   //     container('maven') {
