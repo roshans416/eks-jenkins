@@ -14,7 +14,7 @@ spec:
   serviceAccount: jenkins
   containers:
   - name: maven
-    image: maven:latest
+    image: public.ecr.aws/s5f4f9y1/maven:latest
     command:
     - cat
     tty: true
@@ -22,7 +22,7 @@ spec:
       - mountPath: "/root/.m2"
         name: m2
   - name: docker
-    image: docker:latest
+    image: public.ecr.aws/s5f4f9y1/docker:latest
     command:
     - cat
     tty: true
@@ -30,7 +30,7 @@ spec:
     - mountPath: /var/run/docker.sock
       name: docker-sock
   - name: kubectl
-    image: dtzar/helm-kubectl
+    image: public.ecr.aws/s5f4f9y1/kubectl:latest
     command:
     - cat
     tty: true
