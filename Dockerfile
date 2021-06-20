@@ -1,4 +1,4 @@
-FROM maven:3.6.0-jdk-8-alpine as builder
+FROM public.ecr.aws/s5f4f9y1/maven:3.6-jdk-8 as builder
 COPY  . /root/app/
 WORKDIR /root/app
 RUN mvn clean package -Dmaven.test.skip=true
