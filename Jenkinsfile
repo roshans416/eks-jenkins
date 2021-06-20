@@ -14,7 +14,7 @@ spec:
   serviceAccount: jenkins
   containers:
   - name: maven
-    image: public.ecr.aws/s5f4f9y1/maven:latest
+    image: public.ecr.aws/s5f4f9y1/maven:3.6-jdk-8
     command:
     - cat
     tty: true
